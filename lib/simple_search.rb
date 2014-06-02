@@ -54,7 +54,7 @@ module SimpleSearch
   #   and a date one day after the date parsed out of the search
   #   string (or nil), respectively.
   def simple_search(search)
-    if search and !search.empty?
+    if search and !search.empty? 
       #date search
       begin
         date = Date.parse(search) 
@@ -62,16 +62,17 @@ module SimpleSearch
       rescue
         date_search = [nil, nil]
       end
-      if search[/=/]
-        conditions = {}
+
+      if search=~/[=]/
+        conditions = {}        
         search.split(",").each do |_search|
-          _search.strip!
+          _search.strip!          
           if (self.column_names || self::SEARCH_FIELDS).include?(_search.split("=", 2).first)
             conditions[_search.split("=", 2).first.strip.to_s] = _search.split("=", 2).last.strip.to_s
           end
-        end
-        # return a hash whose keys are column names and whose values are the required values of those columns
-        conditions
+        end       
+        conditions # return a hash whose keys are column names and whose values are the required values of those columns
+      
       else
         # return an array of the form [format_string, HASH] suitable for using as the argument for '.where()'
         [
@@ -81,9 +82,10 @@ module SimpleSearch
          { :search => search, :wildcard_search => "%#{search}%", 
            :date_start_search => date_search[0], :date_end_search => date_search[1] }
         ]
-      end
+    end
+
     else
-      # .where({}) finds everything
+      # .where({}) finds everything (search empty)
       {}
     end
   end
@@ -120,7 +122,7 @@ module SimpleSearch
     case type
     when :boolean
       search[/[10tfTF]/] == search ? "#{column} = :search" : nil
-    when :datetime
+    when :date, :datetime
       # Check to see if valid date in string, most of line is error catching.
       # If valid wrap in date range +- 1 day
        date_search == [nil, nil] ? nil : "(#{column} > :date_start_search and #{column} < :date_end_search)"

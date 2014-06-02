@@ -3,8 +3,8 @@ class Posterior < ActiveRecord::Base
   include Overrides
 
   extend SimpleSearch
-  SEARCH_INCLUDES = %w{ pft }
-  SEARCH_FIELDS = %w{ pfts.name posteriors.filename }
+  SEARCH_INCLUDES = %w{ pft}
+  SEARCH_FIELDS = %w{ pfts.name }
 
   has_and_belongs_to_many :runs
   has_many :files, :as => :container, :class_name => 'DBFile'

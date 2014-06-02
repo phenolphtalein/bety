@@ -12,6 +12,7 @@
   <%= csrf_meta_tag %>
 
   <%= javascript_include_tag 'lazy/jquery-1.7.2.js' %>
+
   <!--  It seems so far that everything works in 1.7.2.-->
   <%#= javascript_include_tag 'libs/jquery-1.6.2.min.js' %>
   <%= javascript_include_tag :all, :cache => "cache/all" %>
@@ -66,13 +67,14 @@
       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
+
   </script>
-  
+
   <!-- Maintain the order of the following CSS until we can gut the "scaffold" CSS -->
   <!-- Old CSS -->
   <%= stylesheet_link_tag "scaffold" %>
   <!-- Redesign CSS -->
-  <%= stylesheet_link_tag "base", "grid", "layout", "dropdown", "tables", "demo" %>
+  <%= stylesheet_link_tag "schemaSpy","base", "grid", "layout", "dropdown", "tables", "demo" %>
 </head>
 
 
