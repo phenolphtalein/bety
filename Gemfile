@@ -19,7 +19,6 @@ gem "will_paginate", "3.0.4"
 gem "bootstrap-will_paginate"
 gem "rspec-rails"
 gem "capybara"
-gem "selenium-webdriver","2.42.0"
 
 # MySQL, comment out PostgreSQL section
 gem "mysql2"
