@@ -46,7 +46,7 @@ table {
   padding: 8px 0px;
 }
 
-.header {
+.content .header {
   color: #000000;
   background: transparent;
   font-weight: bold;
