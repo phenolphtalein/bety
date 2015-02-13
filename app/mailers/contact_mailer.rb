@@ -39,6 +39,17 @@ class ContactMailer < ActionMailer::Base
          :date => Time.now)
   end
 
+  def apikey_email(user)
+    @user = user
+    email_to = "#{@user[:name]} <#{@user[:email]}>"
+    email_from = "BETYdb: <betydb@gmail.com>"
+
+    mail(:to => email_to,
+         :from => email_from,
+         :subject => "[BETY] apikey created",
+         :date => Time.now)
+  end
+
   def admin_approval(user, url)
   	@user = user
   	@url = url
