@@ -58,7 +58,7 @@ BetyRails3::Application.routes.draw do # RAILS3 |map| removed
 
   get ':controller/autocomplete', action: 'autocomplete'
 
-  resources :yieldsviews, :only => [:show]
+  resources :yieldsviews, :only => [:show,:index]
   resources :workflows
   resources :formats_variables
   resources :dbfiles do
@@ -135,7 +135,7 @@ BetyRails3::Application.routes.draw do # RAILS3 |map| removed
 
 
   resources :errors, :only => [:index, :create]
-  match 'users/create_apikeys' => 'users#create_apikeys'
+  match '/users/create_apikey' => 'users#create_apikey'
   resources :users
   resources :schemas, :only => [:index]
 

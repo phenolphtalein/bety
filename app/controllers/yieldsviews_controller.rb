@@ -5,6 +5,16 @@ class YieldsviewsController < ApplicationController
 
   # GET /yields/1
   # GET /yields/1.xml
+  def index
+    @yield = Yieldsview.api_search(params)
+    log_searches(Yieldsview.method(:api_search), params)
+    respond_to do |format|
+        format.xml  { render :xml => @yield }
+        format.json { render :json => @yield }
+        format.csv  { render :csv => @yield }
+    end
+  end
+
   def show
     @yield = Yieldsview.all_limited(current_user).find_by_yield_id(params[:id])
 

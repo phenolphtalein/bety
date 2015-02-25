@@ -1,4 +1,5 @@
 class Yieldsview < ActiveRecord::Base
+  extend SimpleSearch
   set_table_name 'yieldsview'
 
   scope :all_limited, lambda { |current_user|
